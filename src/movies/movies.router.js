@@ -6,4 +6,8 @@ router.route("/")
     .get(controller.list)
     .all(methodNotAllowed)
 
+router.route("/?is_showing=true")
+    .get(controller.listNowShowing)
+    .all(methodNotAllowed)
+
 module.exports = router
