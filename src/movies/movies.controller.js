@@ -31,11 +31,35 @@ function read(req, res) {
     res.json({ data })
 }
 
+async function listTheatersPlaying(req, res) {
+    const data = await service.listTheatersPlaying(req.params.movieId)
+    res.json({ data })
+}
+
+async function listMovieReviews(req,res) {
+    const data = await service.listMovieReviews(req.params.movieId)
+    const results = await Promise.all(data.map(async review => {
+        const critic = await service.getCriticById(review.critic_id)
+        return {...review, critic}
+    }))
+    res.json({ data: results })
+}
+
+
+
 module.exports = {
     list: asyncErrorBoundary(list),
     listNowShowing: asyncErrorBoundary(listNowShowing),
     read: [
         asyncErrorBoundary(movieExists), 
         asyncErrorBoundary(read),
-    ]
+    ],
+    listTheatersPlaying: [
+        asyncErrorBoundary(movieExists),
+        asyncErrorBoundary(listTheatersPlaying),
+    ],
+    listMovieReviews: [
+        asyncErrorBoundary(movieExists),
+        asyncErrorBoundary(listMovieReviews),
+    ],
 }
