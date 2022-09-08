@@ -1,10 +1,9 @@
 const knex = require("../db/connection");
 
-function read(review_id) {
+function read(reviewId) {
     return knex("reviews")
         .select("*")
-        .where({ review_id })
-        .first()
+        .where({ review_id: reviewId })
 }
 
 function update(updatedReview) {
