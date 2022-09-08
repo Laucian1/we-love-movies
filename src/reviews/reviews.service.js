@@ -12,7 +12,6 @@ function update(updatedReview) {
         .select("*")
         .where({ review_id: updatedReview.review_id })
         .update(updatedReview, "*")
-        .then((updatedRecords) => updatedRecords[0])
 }
 
 function destroy(review_id) {
@@ -21,8 +20,16 @@ function destroy(review_id) {
         .del()
 }
 
+function getCriticById(critic_id) {
+    return knex("critics as c")
+        .select("c.*")
+        .where({ critic_id })
+        .first()
+}
+
 module.exports = {
     read,
     update,
     delete: destroy,
+    getCriticById,
 }

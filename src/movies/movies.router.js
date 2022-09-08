@@ -6,10 +6,6 @@ router.route("/")
     .get(controller.list)
     .all(methodNotAllowed)
 
-router.route("/?is_showing=true")
-    .get(controller.listNowShowing)
-    .all(methodNotAllowed)
-
 router.route("/:movieId")
     .get(controller.read)
     .all(methodNotAllowed)
