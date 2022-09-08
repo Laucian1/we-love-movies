@@ -3,7 +3,7 @@ const knex = require("../db/connection");
 function read(review_id) {
     return knex("reviews")
         .select("*")
-        .where( review_id )
+        .where({ review_id })
         .first()
 }
 

@@ -17,7 +17,25 @@ async function listNowShowing(req, res) {
     res.json({data: parsed})
 }
 
+async function movieExists(req, res, next) {
+    const movie = await service.read(req.params.movieId)
+    if (movie) {
+        res.locals.movie = movie
+        return next()
+    }
+    next({ status: 404, message: "Movie cannot be found."})
+}
+
+function read(req, res) {
+    const { movie: data } = res.locals
+    res.json({ data })
+}
+
 module.exports = {
     list: asyncErrorBoundary(list),
-    listNowShowing: asyncErrorBoundary(listNowShowing)
+    listNowShowing: asyncErrorBoundary(listNowShowing),
+    read: [
+        asyncErrorBoundary(movieExists), 
+        asyncErrorBoundary(read),
+    ]
 }
