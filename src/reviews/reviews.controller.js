@@ -11,13 +11,17 @@ async function reviewExists(req, res, next) {
 }
 
 async function update(req, res) {
-    const updatedReview = {
+    const newReview = {
         ...req.body.data,
-        review_id: res.locals.review.review_id,
+        review_id: res.locals.review.review_id
     }
-    const data = await service.update(updatedReview)
-    res.json({ data })
-    console.log(data)
+    const updatedReview = await service.update(newReview)
+    const review = await service.read(res.locals.review.review_id)
+    const reviewResponse = {
+        ...review,
+        critic: await service.getCriticById(res.locals.review.critic_id),
+    }
+    res.json({ data: reviewResponse })
 }
 
 async function destroy(req, res) {
