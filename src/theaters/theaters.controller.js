@@ -3,6 +3,7 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 const reduceProperties = require("../utils/reduce-properties")
 
 async function list(req, res) {
+    //reduce properties necessary for the movie objects
     const reduceMovies = reduceProperties("theater_id", {
         movie_id: ["movies", null, "movie_id"],
         title: ["movies", null, "title"],
@@ -16,7 +17,9 @@ async function list(req, res) {
         theater_id: ["movies", null, "theater_id"]
     })
 
+    //gather the necessary data
     const data = await service.list()
+    //parse the data so runtime is a number rather than a string
     const parsed = data.map(({ runtime_in_minutes, ...data}) => {
         return { runtime_in_minutes: Number(runtime_in_minutes), ...data }
     })
