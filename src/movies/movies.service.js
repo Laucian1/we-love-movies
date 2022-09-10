@@ -12,7 +12,6 @@ function list(nowShowing) {
     }
     //else return full list
     return knex("movies")
-       // .select("*")
 }
 
 //select specific movie by id
