@@ -21,8 +21,6 @@ PATHS:
 /theaters -- Gets a list of all theaters, along with the movies currently showing in each theater.
 
 
-A sample frontend can be found at:
-https://github.com/Laucian1/starter-movie-front-end
 
 This app is deployed at: 
 https://russ-we-love-movies-front-end.herokuapp.com/
