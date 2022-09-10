@@ -13,6 +13,7 @@ async function reviewExists(req, res, next) {
 }
 
 async function update(req, res) {
+    console.log(req.body.data)
     //set up new review object based on selected review id
     const newReview = {
         ...req.body.data,
