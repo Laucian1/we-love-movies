@@ -23,3 +23,6 @@ PATHS:
 
 A sample frontend can be found at:
 https://github.com/Laucian1/starter-movie-front-end
+
+This app is deployed at: 
+https://russ-we-love-movies-back-end.herokuapp.com/
