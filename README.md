@@ -24,3 +24,4 @@ PATHS:
 
 This app is deployed at: 
 https://russ-we-love-movies-front-end.herokuapp.com/
+
