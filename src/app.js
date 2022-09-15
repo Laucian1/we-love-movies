@@ -11,7 +11,9 @@ const theatersRouter = require("./theaters/theaters.router")
 
 const app = express();
 
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}));
 app.use(express.json())
 app.get("/", (req, res) => res.status(301).redirect("/movies"))
 
