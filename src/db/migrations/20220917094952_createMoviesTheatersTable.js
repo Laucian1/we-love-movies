@@ -1,5 +1,6 @@
 
 exports.up = async function(knex) {
+    //makes movies_theaters table
     return await knex.schema.createTable("movies_theaters", (table) => {
       table.integer("movie_id").unsigned().notNullable()
       table
@@ -18,6 +19,7 @@ exports.up = async function(knex) {
   };
   
   exports.down = async function(knex) {
+    //drops movies_theaters table
     return await knex.schema.dropTable("movies_theaters")
   };
   

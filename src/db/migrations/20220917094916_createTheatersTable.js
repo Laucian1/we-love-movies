@@ -1,5 +1,6 @@
 
 exports.up = async function(knex) {
+    //makes theaters table
     return await knex.schema.createTable("theaters", (table) => {
       table.increments("theater_id").primary()
       table.string("name")
@@ -13,6 +14,7 @@ exports.up = async function(knex) {
   };
   
   exports.down = async function(knex) {
+    //drops theaters table
     return await knex.schema.dropTable("theaters")
   };
   
