@@ -1,10 +1,10 @@
 const service = require("./reviews.service")
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
 
-//find a specific review based on input review id and store it
-//for future use
+//find a specific review based on input review id
 async function reviewExists(req, res, next) {
     const review = await service.read(req.params.reviewId)
+    //store review in res.locals.review for use in update and destroy functions
     if (review) {
         res.locals.review = review
         return next()

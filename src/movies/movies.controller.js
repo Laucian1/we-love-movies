@@ -14,6 +14,7 @@ async function list(req, res) {
 //find specific movie by id or return error
 async function movieExists(req, res, next) {
     const movie = await service.read(req.params.movieId)
+    //add movie to res.locals.movie for use in read and specific list functions
     if (movie) {
         res.locals.movie = movie
         return next()
