@@ -1,9 +1,13 @@
 {
   "name": "project-movie-back-end",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.13.0"
+  },
   "description": "zid-be-project-movie-01-qualified",
-  "main": "src/app.js",
+  "main": "src/server.js",
   "scripts": {
+    "client": "npm start --prefix client",
     "docker:build": "docker image build . -t thinkful-ed/zid-be-project-movie-01-qualified",
     "docker:run": "docker run --rm -it -p 5000:5000 thinkful-ed/zid-be-project-movie-01-qualified",
     "docker:stop": "docker stop $(docker ps -q)",
