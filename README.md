@@ -20,8 +20,9 @@ PATHS:
 
 /theaters -- Gets a list of all theaters, along with the movies currently showing in each theater.
 
+The backend is deployed at: 
+https://russ-we-love-movies-back-end.herokuapp.com/movies
 
-
-This app is deployed at: 
+The full app is deployed at: 
 https://russ-we-love-movies-front-end.herokuapp.com/
 
